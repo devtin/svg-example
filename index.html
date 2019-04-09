@@ -21,6 +21,10 @@
             height: 400px;
         }
 
+        svg {
+            overflow: visible;
+        }
+
         .info {
             width: 100vw;
             height: 200px;
@@ -32,6 +36,16 @@
             pointer-events: none;
             z-index: 1000;
             transition: opacity .3s ease-in-out;
+        }
+
+        .st0, .st1, .st2, .st3 {
+            cursor: pointer;
+            transition: transform .1s ease-in-out;
+            transform-origin: 50% 50%;
+        }
+
+        .st0:hover, .st1:hover, .st2:hover, .st3:hover {
+            transform: scale(1.1);
         }
 
         .info.on {
