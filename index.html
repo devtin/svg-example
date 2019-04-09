@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SVG</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ball {
+            width: 400px;
+            height: 400px;
+        }
+
+        .info {
+            width: 100vw;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 60px;
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            transition: opacity .3s ease-in-out;
+        }
+
+        .info.on {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="info info-red"><h1>Info red!</h1></div>
+    <div class="info info-green"><h1>Info green!</h1></div>
+    <div class="info info-blue"><h1>Info blue!</h1></div>
+    <div class="info info-yellow"><h1>Info yellow!</h1></div>
+    <div class="ball">
+        <!-- SVG VA AQUI -->
+        <?xml version="1.0" encoding="utf-8"?>
+        <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
+             viewBox="0 0 336 336" style="enable-background:new 0 0 336 336;" xml:space="preserve">
+<style type="text/css">
+	.st0 {
+        fill: #FA0F0C;
+    }
+
+    .st1 {
+        fill: #169133;
+    }
+
+    .st2 {
+        fill: #1D0E82;
+    }
+
+    .st3 {
+        fill: #FCCC12;
+    }
+</style>
+            <path id="red" class="st0" d="M163.3,0.5C73.4,0.5,0.5,73.4,0.5,163.3h162.8V0.5z"/>
+            <path id="green" class="st1" d="M336,163.3C336,73.4,263.1,0.5,173.3,0.5v162.8H336z"/>
+            <path id="blue" class="st2" d="M163.3,336C73.4,336,0.5,263.1,0.5,173.3h162.8V336z"/>
+            <path id="yellow" class="st3" d="M336,173.3c0,89.9-72.9,162.8-162.8,162.8V173.3H336z"/>
+</svg>
+        <!-- SVG TERMINA AQUI -->
+    </div>
+</div>
+<script>
+  function closeLastOpened () {
+    if (lastOpened) {
+      lastOpened.classList.remove('on')
+      lastOpened = null
+    }
+  }
+
+  function display (which) {
+    console.log(`displaying`, which)
+    closeLastOpened()
+    lastOpened = document.querySelector('.info-' + which)
+    lastOpened.classList.add('on')
+  }
+
+  let lastOpened
+
+  ['red','green','blue','yellow'].forEach(color => {
+    document.getElementById(color).onmouseover = display.bind(null, color)
+  })
+</script>
+</body>
+</html>
