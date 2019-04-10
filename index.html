@@ -100,8 +100,6 @@
   }
 
   function display (which) {
-    console.log(`displaying`, which)
-    closeLastOpened()
     lastOpened = document.querySelector('.info-' + which)
     lastOpened.classList.add('on')
   }
@@ -110,6 +108,7 @@
 
   ['red','green','blue','yellow'].forEach(color => {
     document.getElementById(color).onmouseover = display.bind(null, color)
+    document.getElementById(color).onmouseout = closeLastOpened
   })
 </script>
 </body>
